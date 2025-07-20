@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 class Product {
   final String id;
@@ -7,7 +6,7 @@ class Product {
   final double price;
   final double? offerPercentage;
   final String? description;
-  final List<String>? colors;
+  final List<int>? colors;
   final List<String>? sizes;
   final List<String> images;
 
@@ -30,7 +29,7 @@ class Product {
     double? price,
     double? offerPercentage,
     String? description,
-    List<String>? colors,
+    List<int>? colors,
     List<String>? sizes,
     List<String>? images,
   }) {
@@ -47,37 +46,33 @@ class Product {
     );
   }
 
-  factory Product.fromRawJson(String str) => Product.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
-  factory Product.fromJson(Map<String, dynamic> json) {
+  factory Product.fromMap(Map<String, dynamic> map) {
     return Product(
-      id: json['id'],
-      name: json['name'],
-      category: json['category'],
-      price: json['price'].toDouble(),
-      offerPercentage: json['offerPercentage']?.toDouble(),
-      description: json['description'],
-      colors: (json['colors'] as List?)?.map((e) => e.toString()).toList(),
-      sizes: (json['sizes'] as List?)?.map((e) => e.toString()).toList(),
-      images: (json['images'] as List).map((e) => e.toString()).toList(),
+      id: map['id'],
+      name: map['name'],
+      category: map['category'],
+      price: map['price'].toDouble(),
+      offerPercentage: map['offerPercentage']?.toDouble(),
+      description: map['description'],
+      colors: (map['colors'] as List?)?.map((e) => e as int).toList(),
+      sizes: (map['sizes'] as List?)?.map((e) => e.toString()).toList(),
+      images: (map['images'] as List).map((e) => e.toString()).toList(),
     );
   }
 
-  Map<String, dynamic> toJson() {
-  return {
-    'id': id,
-    'name': name,
-    'category': category,
-    'price': price,
-    'offerPercentage': offerPercentage,
-    'description': description,
-    'colors': colors,
-    'sizes': sizes,
-    'images': images,
-  };
-}
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'category': category,
+      'price': price,
+      'offerPercentage': offerPercentage,
+      'description': description,
+      'colors': colors,
+      'sizes': sizes,
+      'images': images,
+    };
+  }
 }
 
 
