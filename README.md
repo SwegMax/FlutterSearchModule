@@ -1,11 +1,7 @@
 # flutter_search_module
 
-A new Flutter module project.
+Demo:
 
-## Getting Started
 
-For help getting started with Flutter development, view the online
-[documentation](https://flutter.dev/).
+https://github.com/user-attachments/assets/1509b531-dadb-4661-bfed-53f7f638d275
 
-For instructions integrating Flutter modules to your existing applications,
-see the [add-to-app documentation](https://flutter.dev/to/add-to-app).
